@@ -4,6 +4,8 @@ A beautiful, high-performance, and mathematically rigorous interactive web appli
 
 Built with React, Vite, HTML5 Canvas, and KaTeX, this dashboard provides real-time insights into how the **Metropolis-Hastings** algorithm explores complex, multi-dimensional probability landscapes.
 
+![MCMC Laboratory Demo Dashboard](assets/mcmc-laboratory-preview.png)
+
 ## Features
 
 - **High-Performance Phase Space Canvas**: A custom HTML5 Canvas implementation visualizes the background probability heatmap and traces the particle trajectories in real-time.
@@ -47,3 +49,7 @@ To run the application on your local machine:
 - **Charts**: [Chart.js](https://www.chartjs.org/) + `react-chartjs-2`
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Styling**: Vanilla CSS with modern CSS Variables and rigorous CSS Grid architectures.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
