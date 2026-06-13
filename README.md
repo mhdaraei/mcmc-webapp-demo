@@ -1,16 +1,49 @@
-# React + Vite
+# Interactive MCMC Laboratory
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A beautiful, high-performance, and mathematically rigorous interactive web application for visualizing and learning Markov Chain Monte Carlo (MCMC) algorithms. 
 
-Currently, two official plugins are available:
+Built with React, Vite, HTML5 Canvas, and KaTeX, this dashboard provides real-time insights into how the **Metropolis-Hastings** algorithm explores complex, multi-dimensional probability landscapes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **High-Performance Phase Space Canvas**: A custom HTML5 Canvas implementation visualizes the background probability heatmap and traces the particle trajectories in real-time.
+- **Step-by-Step Inspector**: An educational math panel that breaks down exactly what the algorithm is calculating at each tick—showing the proposal coordinates, exact acceptance ratio ($\alpha$), and the random draw ($u$).
+- **Dynamic Charting**: Real-time Trace Plots track chain mixing, while Marginal Histograms build up empirical probability densities for both parameters independently.
+- **Simulation Success Score**: Continuously evaluates the Bhattacharyya Histogram Intersection between the empirical sample density and the Ground Truth distribution, giving you a live percentage score of how well the MCMC chain has mapped the target.
+- **Responsive Layout**: A mathematically deterministic CSS Grid layout that gracefully adapts to ultra-wide monitors, laptops, tablets, and mobile devices without ever distorting equations or breaking aspect ratios.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Target Distributions Included
 
-## Expanding the ESLint configuration
+The laboratory allows you to evaluate the sampler against several standard benchmark distributions:
+1. **Isotropic Gaussian** (Easy): A simple unimodal target to demonstrate basic convergence.
+2. **Gaussian Mixture Model** (Variable): A multi-modal target with a dynamic "Mode Separation" slider. Demonstrates how samplers can fail to cross low-probability valleys if the proposal step size isn't calibrated.
+3. **Rosenbrock Banana Function** (Hard): A classic, highly pathological, non-convex optimization benchmark distribution characterized by a narrow, curved valley.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Running Locally
+
+To run the application on your local machine:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/mhdaraei/mcmc-webapp-demo.git
+   cd mcmc-webapp-demo
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the Vite development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser to `http://localhost:5173`.
+
+## Tech Stack
+- **Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Math Typesetting**: [KaTeX](https://katex.org/) (via direct native bindings for performance and syntax reliability)
+- **Charts**: [Chart.js](https://www.chartjs.org/) + `react-chartjs-2`
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Styling**: Vanilla CSS with modern CSS Variables and rigorous CSS Grid architectures.
