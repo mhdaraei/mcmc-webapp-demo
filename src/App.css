@@ -1,0 +1,189 @@
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 380px;
+  min-width: 380px;
+  background: var(--bg-color-alt);
+  border-right: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.sidebar-header p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.sidebar-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.control-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 1rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--bg-color);
+  overflow-y: auto;
+}
+
+/* 4-Panel Grid */
+.lab-grid {
+  display: grid;
+  grid-template-columns: minmax(350px, 480px) minmax(400px, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.panel {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+}
+
+.panel-header {
+  background: rgba(0,0,0,0.2);
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--card-border);
+  display: flex;
+  justify-content: space-between;
+}
+
+.panel-body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Specific Panel Tweaks */
+.canvas-container {
+  width: 100%;
+  max-width: 480px; /* Deterministic cap so it never blows up */
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+  background: #000;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
+}
+
+.canvas-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.inspector-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.inspector-box {
+  background: rgba(0,0,0,0.3);
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--card-border);
+}
+
+.inspector-result {
+  grid-column: span 2;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.inspector-result.accept {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.inspector-result.reject {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--accent-danger);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Charts */
+.chart-container {
+  height: 200px;
+  width: 100%;
+  position: relative;
+}
+
+/* --- Rigorous Responsive Breakpoints --- */
+
+/* 1. Medium Screens (Laptops, Tablets landscape) */
+@media (max-width: 1200px) {
+  .lab-grid {
+    /* Switch the main content to a single column stack if there isn't enough width */
+    grid-template-columns: minmax(350px, 600px);
+    justify-content: center; /* Center the single column */
+  }
+}
+
+/* 2. Small Screens (Mobile, Tablets portrait) */
+@media (max-width: 850px) {
+  .dashboard-container {
+    flex-direction: column; /* Stack sidebar on top of main content */
+    overflow-y: auto; /* Allow entire page to scroll */
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--card-border);
+  }
+  
+  .main-content {
+    overflow: visible;
+  }
+  
+  .lab-grid {
+    grid-template-columns: 1fr;
+  }
+}
